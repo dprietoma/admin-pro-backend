@@ -20,6 +20,10 @@ app.use(express.json());
 // Routes
 app.use('/api/usuarios', require('./routes/usuarios.route'));
 app.use('/api/auth', require('./routes/auth.route'));
+app.use('/api/hospitales', require('./routes/hospitales.route'));
+app.use('/api/medicos', require('./routes/medicos.route'));
+app.use('/api/todos', require('./routes/filtros.route'));
+app.use('/api/uploads', require('./routes/uploads.route'));
 
 
 app.listen(process.env.PORT, () => {

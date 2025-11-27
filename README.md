@@ -15,3 +15,6 @@ Descripcion del proyecto
 * helpers: logica del token
 * middlewares: validadores de campos y del token
 * models: los modelos de nuestro backend
+* Para la carga de archivos se implementa la libreria de npm i express-fileupload
+* Se crea una carpeta uploads en la cual se guardan los tipos de cada grupo de imagenes 
+* Para el amnejo del id de las imagenes se implemento esta libreria npm install uuid@8.3.2

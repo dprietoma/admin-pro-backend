@@ -4,13 +4,22 @@ const { response } = require("express");
 
 const { generarJwt } = require("../helpers/jwt.helpers");
 
-const getUsuarios = async (req, res) => {
-  const usuarios = await Usuario.find();
+const getUsuarios = async (req, res = response) => {
+
+  const desde = Number(req.query.desde) || 0;
+
+  const[usuarios,total] = await Promise.all([
+    Usuario.find()
+      .skip(desde)
+      .limit(5),
+    
+    Usuario.countDocuments()
+  ]);
 
   res.status(200).json({
     ok: true,
     usuarios,
-    uid: req.uid,
+    total
   });
 };
 
