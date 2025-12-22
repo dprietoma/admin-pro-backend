@@ -2,7 +2,7 @@
 Route: /api/auth
 */
 const { Router } = require('express');
-const { login } = require('../controllers/auth.controllers');
+const { login, googleSingIn } = require('../controllers/auth.controllers');
 const { check } = require('express-validator');
 const { validarCampos } = require('../middlewares/validar-campos.middlewares');
 
@@ -14,6 +14,11 @@ route.post('/login',[
     check('password', 'El password debe ser de 6 caracteres').isLength({ min: 6 }),
     validarCampos
 ], login);
+
+route.post('/google',[
+    check('token', 'El token de google es obligatorio').not().isEmpty(),
+    validarCampos
+], googleSingIn);
 
 
 

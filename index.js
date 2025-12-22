@@ -12,6 +12,9 @@ dbConnetionString();
 // CORS
 app.use(cors());
 
+// Carpetas públicas
+app.use( express.static('public') );
+
 // Lectura y parseo del body
 app.use(express.json());
 

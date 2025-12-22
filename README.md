@@ -3,6 +3,7 @@
 Descripcion del proyecto
 
 * Si se clona el proyecto no olvidar dar npm i
+* Antes de iniciar de forma local se debe levantar el MongoDB Compass
 * Para levantar el proyecto se debe tirar el comando npm run start:dev
 * Aqui va estar el Backend del proyecto Adminpro - Hospitales
 * Este Backend esta configurado con mongo db atlas y Mongo compass es el encargado de la conexion
@@ -18,3 +19,4 @@ Descripcion del proyecto
 * Para la carga de archivos se implementa la libreria de npm i express-fileupload
 * Se crea una carpeta uploads en la cual se guardan los tipos de cada grupo de imagenes 
 * Para el amnejo del id de las imagenes se implemento esta libreria npm install uuid@8.3.2
+* Se realiza logeo mediante google, para esto se instalo una libreria y se utilizo la documentacion de la pagina, no esta actualizada pero funciona
