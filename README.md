@@ -18,5 +18,5 @@ Descripcion del proyecto
 * models: los modelos de nuestro backend
 * Para la carga de archivos se implementa la libreria de npm i express-fileupload
 * Se crea una carpeta uploads en la cual se guardan los tipos de cada grupo de imagenes 
-* Para el amnejo del id de las imagenes se implemento esta libreria npm install uuid@8.3.2
+* Para el manejo del id de las imagenes se implemento esta libreria npm install uuid@8.3.2
 * Se realiza logeo mediante google, para esto se instalo una libreria y se utilizo la documentacion de la pagina, no esta actualizada pero funciona
