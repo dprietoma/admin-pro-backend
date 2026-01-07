@@ -12,6 +12,12 @@ dbConnetionString();
 // CORS
 app.use(cors());
 
+// ✅ COOP para permitir popups (Google login / postMessage)
+app.use((req, res, next) => {
+  res.setHeader('Cross-Origin-Opener-Policy', 'same-origin-allow-popups');
+  next();
+});
+
 // Carpetas públicas
 app.use( express.static('public') );
 

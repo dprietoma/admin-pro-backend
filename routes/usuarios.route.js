@@ -21,7 +21,6 @@ route.get("/", validarJWT, getUsuarios);
 route.post(
   "/",
   [
-    validarJWT,
     check("nombre", "El nombre es obligatorio").not().isEmpty(),
     check("email", "El email es obligatorio").isEmail(),
     check("password", "El password debe ser de 6 caracteres").isLength({min: 6,}),

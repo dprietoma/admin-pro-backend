@@ -2,9 +2,10 @@
 Route: /api/auth
 */
 const { Router } = require('express');
-const { login, googleSingIn } = require('../controllers/auth.controllers');
+const { login, googleSingIn, renewToken } = require('../controllers/auth.controllers');
 const { check } = require('express-validator');
 const { validarCampos } = require('../middlewares/validar-campos.middlewares');
+const { validarJWT } = require('../middlewares/validar-jwt.middlewares');
 
 const route = Router();
 
@@ -19,6 +20,11 @@ route.post('/google',[
     check('token', 'El token de google es obligatorio').not().isEmpty(),
     validarCampos
 ], googleSingIn);
+
+
+route.get('/renew',[
+    validarJWT
+], renewToken);
 
 
 
