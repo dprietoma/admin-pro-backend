@@ -86,13 +86,17 @@ const googleSingIn = async (req, res = response) => {
 
 const renewToken = async (req, res = response) => {
   const uid = req.uid;
-
+  
   // Generar un nuevo JWT
-  const token = await generarJwt(uid);    
+  const token = await generarJwt(uid);   
+  
+  // Obtener el usuario por UID
+  const usuario = await Usuario.findById( uid );
   
   res.json({
       ok: true,
-      token
+      token,
+      usuario
   });
 
 }

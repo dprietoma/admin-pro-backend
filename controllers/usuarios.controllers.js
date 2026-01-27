@@ -65,8 +65,8 @@ const putUsuarios = async (req, res = response) => {
   const udi = req.params.id;
 
   try {
-    const usuario = await Usuario.findById(udi);
-    if (!usuario) {
+    const usuarioDB = await Usuario.findById(udi);
+    if (!usuarioDB) {
       return res.status(404).json({
         ok: false,
         message: "Usuario no encontrado por id",
@@ -76,7 +76,7 @@ const putUsuarios = async (req, res = response) => {
     // Actualizaciones
     const { password, email, google, ...campos } = req.body;
 
-    if (usuario.email !== email) {
+    if (usuarioDB.email !== email) {
       const existeEmail = await Usuario.findOne({ email });
       if (existeEmail) {
         return res.status(400).json({
@@ -86,7 +86,10 @@ const putUsuarios = async (req, res = response) => {
       }
     }
 
-    campos.email = email;
+    if (!usuarioDB.google) {
+      campos.email = email;
+    }
+
 
     const usuarioActualizado = await Usuario.findByIdAndUpdate(udi, campos, {
       new: true,
