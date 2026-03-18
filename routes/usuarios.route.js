@@ -12,7 +12,7 @@ const {
   deleteUsuario,
 } = require("../controllers/usuarios.controllers");
 const { validarCampos } = require("../middlewares/validar-campos.middlewares");
-const { validarJWT } = require("../middlewares/validar-jwt.middlewares");
+const { validarJWT, validarRole } = require("../middlewares/validar-jwt.middlewares");
 
 const route = Router();
 
@@ -32,8 +32,10 @@ route.post(
 route.put("/:id",
   [
     validarJWT,
+    validarRole,
     check("nombre", "El nombre es obligatorio").not().isEmpty(),
     check("email", "El email es obligatorio").isEmail(),
+    check("role", "El role es obligatorio").not().isEmpty(),
     validarCampos,
   ],
   putUsuarios

@@ -4,6 +4,7 @@ const { response } = require("express");
 const Usuario = require("../models/usuario.model");
 const { generarJwt } = require("../helpers/jwt.helpers");
 const { googleVerify } = require("../helpers/google-verify.helpers");
+const { getmenuFrontend } = require("../helpers/menu-frontend.helpers");
 
 const login = async (req, res = response) => {
   try {
@@ -33,6 +34,7 @@ const login = async (req, res = response) => {
     res.json({
       ok: true,
       token,
+      menu: getmenuFrontend(userDB.role)
     });
   } catch (error) {
     console.log(error);
@@ -74,6 +76,7 @@ const googleSingIn = async (req, res = response) => {
       name,
       picture,
       token,
+      menu: getmenuFrontend(usuario.role)
     });
   } catch (error) {
     res.status(400).json({
@@ -96,7 +99,8 @@ const renewToken = async (req, res = response) => {
   res.json({
       ok: true,
       token,
-      usuario
+      usuario,
+      menu: getmenuFrontend(usuario.role)
   });
 
 }
