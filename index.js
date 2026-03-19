@@ -1,5 +1,6 @@
 const express = require('express');
 require('dotenv').config();
+// const path = require('path');
 
 const { dbConnetionString } = require('./dataBase/config');
 const cors = require('cors')
@@ -19,7 +20,7 @@ app.use((req, res, next) => {
 });
 
 // Carpetas públicas
-app.use( express.static('public') );
+// app.use( express.static('public') );
 
 // Lectura y parseo del body
 app.use(express.json());
@@ -35,9 +36,13 @@ app.use('/api/todos', require('./routes/filtros.route'));
 app.use('/api/uploads', require('./routes/uploads.route'));
 
 
-app.listen(process.env.PORT, () => {
-  console.log('Server is running on port', process.env.PORT);
+// app.get('/*splat', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, 'public/index.html'));
+// });
+
+const PORT = process.env.PORT || 3005;
+app.listen(PORT, () => {
+  console.log('Server is running on port', PORT);
 });
 
 
-// mongodb+srv://davidfelipeprieto_db_user:Il7qgUYBErgZdVt5@adminpro0.icuikqn.mongodb.net/
